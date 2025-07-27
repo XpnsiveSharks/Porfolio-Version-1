@@ -1,38 +1,70 @@
-import { Sun, Moon } from "lucide-react";
-import { useTheme } from "../../hooks/useTheme";
-import ThemeButton from "../../components/ui/ThemeButton"
-const Navbar: React.FC = () => {
-  const { theme, toggleTheme } = useTheme();
-  return (
-    <nav className="h-15 bg-custom-surfaceCards flex items-center justify-between px-6 m-5 dark:bg-slate-100">
-      {/* Logo + Name */}
-      <div className="flex items-center">
-        <img
-          src="src/assets/images/MA_logo.png"
-          alt="Marynelle's pixilated avatar"
-          className="h-7 w-auto"
-        />
-        <p className="hidden sm:block ml-1 text-custom-mutedText font-black font-bebasNeue text-[20px]">
-          MARYNELLE
-        </p>
-      </div>
+// Importing necessary dependencies and components
+import { useState } from "react"; // React Hook for managing component state
+import { Sun, Moon } from "lucide-react"; // Lucide icons used for UI representation
+import { useTheme } from "../../hooks/useTheme"; // Custom hook for handling light/dark mode toggle
+import ThemeButton from "../ui/PrimaryButton"; // Reusable theme toggle button component
+import MobileMenu from "../ui/MobileMenu"; // Separate mobile dropdown menu component for cleaner separation of concerns
+import NavItem from "../../components/ui/NavItem"; // Adjust path as needed
+import BurgerMenuButton from "../../components/ui/BurgerMenuButton";
 
-      {/* Navigation Menu */}
-      <div className="">
-        <ul className="flex space-x-6 text-custom-primaryText font-medium text-[16px]">
-          <li className="cursor-pointer">Home</li>
-          <li className="cursor-pointer">Services</li>
-          <li className="cursor-pointer">About</li>
-          <li className="cursor-pointer">Projects</li>
-          <li className="cursor-pointer">Contact</li>
+import Logo from "../ui/Logo";
+// Define Navbar component using React.FC (functional component typing for TypeScript)
+const Navbar: React.FC = () => {
+  const { theme, toggleTheme } = useTheme(); // Destructure the current theme and toggle function from custom theme hook
+  const [isOpen, setIsOpen] = useState(false); // Manage the open/closed state of the mobile menu
+
+  // List of navigation items shown in both desktop and mobile views
+  const menuItems = ["Home", "Services", "About", "Projects", "Contact"];
+
+  return (
+    <>
+      {/* Desktop Navbar - Hidden on smaller screens (responsive via Tailwind `md:flex`) */}
+      <nav
+        className="hidden md:flex fixed top-5 left-5 right-5 z-50 h-16 bg-custom-surfaceCards dark:bg-custom-surfaceCardsLight rounded-[10px] items-center justify-between px-6 shadow-md"
+        role="navigation"
+        aria-label="Primary"
+      >
+        {/* Brand Logo Section for large screen*/}
+        <Logo />
+        {/* Navigation Links for Large Screen*/}
+        <ul
+          className="flex space-x-6"
+          role="list"
+        >
+          {menuItems.map((item, index) => (
+            <NavItem key={index} label={item} />
+          ))}
         </ul>
-      </div>
-      <div>
+
+        {/* Theme Toggle Button (Sun for light mode, Moon for dark mode) */}
         <ThemeButton onClick={toggleTheme}>
-            {theme === "dark" ? <Moon /> : <Sun />}
+          {theme === "dark" ? <Moon /> : <Sun />}
         </ThemeButton>
+      </nav>
+
+      {/* Mobile Topbar - Only shown on smaller screens (using `md:hidden`) */}
+      <div className="flex md:hidden fixed top-5 left-5 right-5 z-50 h-12 bg-custom-surfaceCards dark:bg-slate-100 rounded-[10px] items-center justify-between px-6 shadow-md">
+        {/* Brand Logo for mobile */}
+        <Logo />
+        {/* Theme toggle and hamburger menu button */}
+        <div className="flex items-center space-x-4">
+          {/* Theme toggle for mobile */}
+          <ThemeButton onClick={toggleTheme}>
+            {theme === "dark" ? <Moon /> : <Sun />}
+          </ThemeButton>
+
+          {/* Hamburger menu button - toggles mobile dropdown menu */}
+          <BurgerMenuButton isOpen={isOpen} toggle={() => setIsOpen(!isOpen)} />
+        </div>
+
       </div>
-    </nav>
+      {/* Mobile Menu Dropdown - Controlled by `isOpen` state */}
+      <MobileMenu
+        isOpen={isOpen} // Whether the mobile menu is visible
+        setIsOpen={setIsOpen} // Pass setter to allow closing from inside the component
+        menuItems={menuItems} // Provide the same nav items as desktop
+      />
+    </>
   );
 };
 

@@ -6,7 +6,6 @@
   --font-poppins: Poppins, "sans-serif";
   --font-nunito: Nunito, "sans-serif";
   --font-bebasNeue: Bebas + Neue, "sans-serif";
-  --breakpoint-xs: 360px;
 
   /* custom color theme */
   --color-custom-background: #0d1117;
@@ -16,18 +15,50 @@
   --color-custom-accent: #00ffab;
   --color-custom-accentHover: #00cc88;
   --color-custom-accentClicked: #00b37e;
-  /* font sizes */
-  /* --font-size-body: 1rem;
-  --font-size-labels: 0.875rem;
-  --font-size-H6: 1.125rem;
-  --font-size-H5: 1.25rem;
-  --font-size-H4: 1.5rem;
-  --font-size-H3: 1.75rem;
-  --font-size-h2: 2rem;
-  --font-size-H1: 2.5rem;
-  --font-size-CTA: 1rem; */
+  --color-custom-textPrimaryLight: #1f2937;
+  --color-custom-backgroundLight: #e2e8f0;
+  --color-custom-surfaceCardsLight: #f1f5f9;
+
+  --breakpoint-sm: 360px;
+  --breakpoint-md: 821px;
+  --breakpoint-lg: 976px;
+}
+@layer components{
+  .custom-button-hover-transition{
+    @apply hover:bg-custom-accentHover 
+    hover:text-custom-textPrimaryLight 
+    text-custom-primaryText 
+    transition-colors 
+    duration-150 
+    ease-in
+    dark:text-custom-textPrimaryLight 
+    dark:hover:text-custom-primaryText
+  }
+  /* large sreen custom font sizes */
+  .text-size-bodytext{font-size: 16px;}
+  .text-size-button{font-size: 16px;}
+  .text-size-labels{font-size: 14px;}
+  .text-size-H6{font-size: 18px;}
+  .text-size-H5{font-size: 20px;}
+  .text-size-H4{font-size: 24px;}
+  .text-size-H3{font-size: 28px;}
+  .text-size-H2{font-size: 32px;}
+  .text-size-H1{font-size: 40px;}
+
+  /* small to medium sreen custom font sizes
+  .font-size-mobile-bodytext{font-size: 16px;}
+  .font-size-mobile-button{font-size: 16px;}
+  .font-size-mobile-labels{font-size: 14px;}
+  .font-size-mobile-H6{font-size: 18px;}
+  .font-size-mobile-H5{font-size: 20px;}
+  .font-size-mobile-H4{font-size: 24px;}
+  .font-size-mobile-H3{font-size: 28px;}
+  .font-size-mobile-H2{font-size: 32px;}
+  .font-size-mobile-H1{font-size: 40px;} */
 }
 
-html, body, #root{
+html,
+body,
+#root {
   height: 100%;
 }

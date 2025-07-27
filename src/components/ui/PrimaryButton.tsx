@@ -12,7 +12,7 @@ const ThemeButton: React.FC<ButtonProps> = ({ children, onClick, className = "",
     <button
       type={type}
       onClick={onClick}
-      className={`px-2 py-2 rounded-full bg-accent text-custom-primaryText dark:text-slate-950 hover:bg-custom-accent transition ${className}`}
+      className={`p-1 md:p-2 rounded-full bg-accent custom-button-hover-transition ${className}`}
     >
       {children}
     </button>

@@ -6,7 +6,7 @@ type ContentsProps = {
 
 const Contents: React.FC<ContentsProps> = ({ children }) => {
   return (
-    <main className="p-4 grid grid-cols-3 bg-amber-400 dark:bg-slate-400">
+    <main className="px-6 pt-30 pb-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {children}
     </main>
   );

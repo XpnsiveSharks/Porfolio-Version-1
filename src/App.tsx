@@ -1,21 +1,17 @@
-import Contents from '../src/components/layout/Contents'
-import Navbar from '../src/components/layout/Navbar';
+import { useTheme } from "./hooks/useTheme";
+import ThemeTransition from "./components/ui/ThemeTransition";
+import Navbar from "../src/components/layout/Navbar";
+import Contents from "./components/layout/Contents";
 function App() {
+  const { isToggling } = useTheme();
   return (
-    <>
-      <Navbar></Navbar>
+    <div className="min-h-screen bg-custom-background dark:bg-custom-backgroundLight transition-colors duration-1000 overflow-hidden">
+      <ThemeTransition isToggling={isToggling} />
+      <Navbar />
       <Contents>
-        <div className="h-50 w-50 flex items-center justify-center bg-amber-600">
-          1
-        </div>
-        <div className="h-50 w-50 flex items-center justify-center bg-amber-600">
-          2
-        </div>
-        <div className="h-50 w-50 flex items-center justify-center bg-amber-600">
-          3
-        </div>
+        
       </Contents>
-    </>
+    </div>
   );
 }
 export default App;
