@@ -35,7 +35,7 @@ const NavItem: React.FC<NavItemProps> = ({ label, onClick }) => {
      */
     <li
       onClick={onClick} // Trigger provided function when clicked (optional)
-      className="cursor-pointer text-size-bodytext px-4 py-2 rounded-[25px] custom-button-hover-transition"
+      className="font-nunito text-size__bodytext px-4 py-2 rounded-[25px] secondary-button--hover-transition"
       role="menuitem" // Improves accessibility when used inside <ul role="menu">
       tabIndex={0} // Makes the item keyboard-navigable
       onKeyDown={(e) => {

@@ -2,7 +2,6 @@
 import { useState } from "react"; // React Hook for managing component state
 import { Sun, Moon } from "lucide-react"; // Lucide icons used for UI representation
 import { useTheme } from "../../hooks/useTheme"; // Custom hook for handling light/dark mode toggle
-import ThemeButton from "../ui/PrimaryButton"; // Reusable theme toggle button component
 import MobileMenu from "../ui/MobileMenu"; // Separate mobile dropdown menu component for cleaner separation of concerns
 import NavItem from "../../components/ui/NavItem"; // Adjust path as needed
 import BurgerMenuButton from "../../components/ui/BurgerMenuButton";
@@ -37,21 +36,22 @@ const Navbar: React.FC = () => {
         </ul>
 
         {/* Theme Toggle Button (Sun for light mode, Moon for dark mode) */}
-        <ThemeButton onClick={toggleTheme}>
+        <button onClick={toggleTheme} className="secondary-button--hover-transition">
           {theme === "dark" ? <Moon /> : <Sun />}
-        </ThemeButton>
+        </button>
       </nav>
 
       {/* Mobile Topbar - Only shown on smaller screens (using `md:hidden`) */}
       <div className="flex md:hidden fixed top-5 left-5 right-5 z-50 h-12 bg-custom-surfaceCards dark:bg-slate-100 rounded-[10px] items-center justify-between px-6 shadow-md">
         {/* Brand Logo for mobile */}
         <Logo />
+        
         {/* Theme toggle and hamburger menu button */}
         <div className="flex items-center space-x-4">
           {/* Theme toggle for mobile */}
-          <ThemeButton onClick={toggleTheme}>
+          <button onClick={toggleTheme} className="secondary-button--hover-transition">
             {theme === "dark" ? <Moon /> : <Sun />}
-          </ThemeButton>
+          </button>
 
           {/* Hamburger menu button - toggles mobile dropdown menu */}
           <BurgerMenuButton isOpen={isOpen} toggle={() => setIsOpen(!isOpen)} />

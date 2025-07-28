@@ -15,9 +15,6 @@
  * - Any branding areas that need to adapt to theme changes.
  */
 
-import lightLogo from "../../assets/images/MA_logo.png"; // Logo shown in light mode
-import darkLogo from "../../assets/images/MA_logo_googlyEyes.png"; // Logo shown in dark mode
-
 // Stateless functional component that returns the appropriate logo based on current theme
 const Logo = () => (
   /**
@@ -35,7 +32,7 @@ const Logo = () => (
       loading="lazy"
       width="36"
       height="36"
-      src={lightLogo}
+      src="/images/MA_logo.png"
       alt="Light Logo"
       className="h-7 md:h-9 w-auto block dark:hidden"
     />
@@ -49,7 +46,7 @@ const Logo = () => (
       loading="lazy"
       width="36"
       height="36"
-      src={darkLogo}
+      src="/images/MA_logo_googlyEyes.png"
       alt="Dark Logo"
       className="h-7 md:h-9 w-auto hidden dark:block"
     />

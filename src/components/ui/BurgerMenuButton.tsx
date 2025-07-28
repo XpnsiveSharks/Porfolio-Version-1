@@ -15,7 +15,7 @@ const BurgerMenuButton: React.FC<BurgerMenuButtonProps> = ({
       aria-label={isOpen ? "Close menu" : "Open menu"}
       aria-expanded={isOpen}
       aria-controls="mobile-menu"
-      className="p-1 rounded-md custom-button-hover-transition"
+      className="p-1 rounded-md secondary-button--hover-transition"
     >
       {isOpen ? <X /> : <Menu />}
     </button>

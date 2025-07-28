@@ -24,7 +24,18 @@
   --breakpoint-lg: 976px;
 }
 @layer components{
-  .custom-button-hover-transition{
+  .primary-button--hover-transition{
+    @apply bg-custom-accent
+    hover:bg-custom-accentHover 
+    hover:text-custom-primaryText
+    text-custom-textPrimaryLight 
+    transition-colors 
+    duration-150 
+    ease-in
+    cursor-pointer
+    rounded-[30px]
+  }
+  .secondary-button--hover-transition{
     @apply hover:bg-custom-accentHover 
     hover:text-custom-textPrimaryLight 
     text-custom-primaryText 
@@ -33,17 +44,22 @@
     ease-in
     dark:text-custom-textPrimaryLight 
     dark:hover:text-custom-primaryText
+    cursor-pointer
+    p-1 
+    md:p-2
+    rounded-full
   }
+  
   /* large sreen custom font sizes */
-  .text-size-bodytext{font-size: 16px;}
-  .text-size-button{font-size: 16px;}
-  .text-size-labels{font-size: 14px;}
-  .text-size-H6{font-size: 18px;}
-  .text-size-H5{font-size: 20px;}
-  .text-size-H4{font-size: 24px;}
-  .text-size-H3{font-size: 28px;}
-  .text-size-H2{font-size: 32px;}
-  .text-size-H1{font-size: 40px;}
+  .text-size__bodytext{font-size: 16px;}
+  .text-size__button{font-size: 16px;}
+  .text-size__labels{font-size: 14px;}
+  .text-size__H6{font-size: 18px;}
+  .text-size__H5{font-size: 20px;}
+  .text-size__H4{font-size: 24px;}
+  .text-size__H3{font-size: 28px;}
+  .text-size__H2{font-size: 32px;}
+  .text-size__H1{font-size: 40px;}
 
   /* small to medium sreen custom font sizes
   .font-size-mobile-bodytext{font-size: 16px;}
